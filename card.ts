@@ -93,18 +93,3 @@ export class Permanent extends Card {
         }
     }
 }
-
-export const Definitions = {
-    ArcaneSignet: new Permanent({
-        cost: new Mana({ generic: 2 }),
-        name: 'Arcane Signet',
-        types: ['Artifact'],
-        mana: new Mana({ black: 1 }),
-    }),
-    SolRing: new Permanent({
-        cost: new Mana({ generic: 1 }),
-        name: 'Sol Ring',
-        types: ['Artifact'],
-        mana: new Mana({ colorless: 2 }),
-    }),
-} as const;
