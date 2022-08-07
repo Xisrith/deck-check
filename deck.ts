@@ -43,7 +43,7 @@ export default class Deck {
     /**
      * Shuffles the deck.
      */
-    shuffle = (): Deck => {
+    shuffle = (): void => {
         // Use the Fisher-Yates / Knuth algorithm.
         let currentIndex = this.cards.length;
         let randomIndex = 0;
@@ -55,7 +55,5 @@ export default class Deck {
         }
         
         this._log('[Deck] Shuffled')
-
-        return this;
     };
 }

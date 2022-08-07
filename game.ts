@@ -1,6 +1,7 @@
 import { Card, CardPermutation, Permanent } from './card';
 import Deck from './deck';
 import Mana from './mana';
+import Permutations from './permutations';
 
 type Log = typeof console.log;
 
@@ -168,26 +169,6 @@ export class Game {
     }
 
     private _discoverCardPermutations = (cards: Card[]): CardPermutation[] => {
-        return this._discoverPermutations(cards.length).map(permutation => new CardPermutation(permutation.map(index => cards[index])));
-    }
-
-    /** TODO: Make this iterative to run faster. */
-    private _discoverPermutations = (count: number, depth: number = 0, permutations: number[][] = []): number[][] => {
-        const newPermutations: number[][] = [];
-        for (let i = 0; i < count; i++) {
-            if (depth === 0) {
-                newPermutations.push([i]);
-            } else {
-                permutations.filter(p => p.length === depth).forEach(p => {
-                    if (!p.includes(i)) {
-                        newPermutations.push([...p, i]);
-                    }
-                })
-            }
-        }
-        if (newPermutations.length > 0) {
-            return this._discoverPermutations(count, depth + 1, [...permutations, ...newPermutations]);
-        }
-        return permutations;
+        return Permutations.getPermutations(cards.length).map(p => new CardPermutation(p.map(i => cards[i])));
     }
 }
