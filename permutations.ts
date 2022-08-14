@@ -8,7 +8,7 @@ export default class Permutations {
             Permutations._permutations.set(count, permutations);
             return permutations;
         } else {
-            return Permutations._permutations.get(count);
+            return Permutations._permutations.get(count)!;
         }
     }
 

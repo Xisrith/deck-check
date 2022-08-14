@@ -32,7 +32,10 @@ const simulate = <T, U>(deck: Card[], simulation: (d: Deck) => T, summary: (resu
 };
 
 const simulateOpeningHand = () => {
-    const getOpeningHand = (deck: Deck) => deck.shuffle().draw(7);
+    const getOpeningHand = (deck: Deck) => {
+        deck.shuffle();
+        return deck.draw(7);
+    }
 
     const simulation = (deck: Deck) => {
         const hand = getOpeningHand(deck);
